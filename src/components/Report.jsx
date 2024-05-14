@@ -1,71 +1,67 @@
-import React from "react";
+
 import {UseReport} from './hooks/useReport'
 /*
-            <p>Compañia: {report.company.name}</p>
-            <p>Ejercicio: {report.exercise}</p>
-            <p>Periodo: {report.period} </p>
-            <p>Ingresos</p>
+            <p>RUC: {item.company_ruc}</p>
+            <p>Empresa: {item.company_name}</p>
+            <p>Periodo: {item.period}</p>
+            <p>Ejercicio: {item.exercise} </p>
             <p>--------------------</p>
-            <p>Banco: {report.icome[0].financeCompany.name}</p>
-            <p>Monto: {report.icome[0].amount}</p>
-            <p>Banco: {report.icome[1].financeCompany.name}</p>
-            <p>Monto: {report.icome[1].amount}</p>
-            <p>Banco: {report.icome[2].financeCompany.name}</p>
-            <p>Monto: {report.icome[2].amount}</p>
-            <p>Proyecciones</p>
+            <p>Ingresos</p>
+            <p>BCP: {item.bcp_amount}</p>
+            <p>INTERBANK: {item.interbanl_amount}</p>
+            <p>BBVA: {item.bbva_amount}</p>
+            <p>Total Ingresos: {item.icome_total}</p>
             <p>---------------------</p>
-            <p>Ventas</p>
-            <p>Monto: {report.projections.sales.worth}</p>
-            <p>IGV: {report.projections.sales.igv}</p>
-            <p>Total: {report.projections.sales.total}</p>
+            <p>Projecciones Ventas</p>
+            <p>Monto: {item.projection_sales_worth}</p>
+            <p>igv: {item.projection_sales_igv}</p>
+            <p>Total: {item.projection_sales_total}</p>
+            <p>Proyecciones Compras</p>
+            <p>Monto: {item.projection_shopping_worth}</p>
+            <p>IGV: {item.projection_shopping_igv}</p>
+            <p>Total: {item.projection_shopping_total}</p>
             <p>----------------------</p>
-            <p>Compras</p>
-            <p>Monto: {report.projections.shopping.worth}</p>
-            <p>IGV: {report.projections.shopping.igv}</p>
-            <p>Total: {report.projections.shopping.total}</p>
             <p>Impuestos</p>
-            <p>IGV del periodo: {report.taxes.of_the_period}</p>
-            <p>Creditos a favor anterior: {report.taxes.credit_in_favor}</p>
-            <p>IGV por devolver: {report.taxes.to_return}</p>
-            <p>Impuesto a la Renta: {report.taxes.monthly_rent}</p>
-            <p>Total: {report.taxes.total}</p> 
+            <p>IGV del periodo: {item.taxes_of_the_period}</p>
+            <p>Creditos a favor anterior: {item.taxes_credit_in_favor}</p>
+            <p>IGV por devolver: {item.taxes_to_return}</p>
+            <p>Impuesto a la Renta: {item.taxes_monthly_rent}</p>
+            <p>Total: {item.taxes_total}</p>
 */
 const Report = ()=>{
     const {report} = UseReport()
     console.log(report)
     return (   
         <>
-            {report.length !== 0 ?(
-                <>
-                <p>Compañia: {report.company.name}</p>
-            <p>Ejercicio: {report.exercise}</p>
-            <p>Periodo: {report.period} </p>
-            <p>Ingresos</p>
-            <p>--------------------</p>
-            <p>Banco: {report.icome[0].financeCompany.name}</p>
-            <p>Monto: {report.icome[0].amount}</p>
-            <p>Banco: {report.icome[1].financeCompany.name}</p>
-            <p>Monto: {report.icome[1].amount}</p>
-            <p>Banco: {report.icome[2].financeCompany.name}</p>
-            <p>Monto: {report.icome[2].amount}</p>
-            <p>Proyecciones</p>
-            <p>---------------------</p>
-            <p>Ventas</p>
-            <p>Monto: {report.projections.sales.worth}</p>
-            <p>IGV: {report.projections.sales.igv}</p>
-            <p>Total: {report.projections.sales.total}</p>
-            <p>----------------------</p>
-            <p>Compras</p>
-            <p>Monto: {report.projections.shopping.worth}</p>
-            <p>IGV: {report.projections.shopping.igv}</p>
-            <p>Total: {report.projections.shopping.total}</p>
-            <p>Impuestos</p>
-            <p>IGV del periodo: {report.taxes.of_the_period}</p>
-            <p>Creditos a favor anterior: {report.taxes.credit_in_favor}</p>
-            <p>IGV por devolver: {report.taxes.to_return}</p>
-            <p>Impuesto a la Renta: {report.taxes.monthly_rent}</p>
-            <p>Total: {report.taxes.total}</p>
-                </>): null }
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>RUC</th>
+                        <th>Razon Social</th>
+                        <th>Periodo</th>
+                        <th>Ejercicio</th>
+                        <th>Total Ingresos</th>
+                        <th>Proyeccion de Ventas</th>
+                        <th>Proyeccion de Compras</th>
+                        <th>Impuesto Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {report.length !== 0 ? report.map((item)=>
+                    <>
+                    <tr>
+                        <td>{item.company_ruc}</td>
+                        <td>{item.company_name}</td>
+                        <td>{item.period}</td>
+                        <td>{item.exercise}</td>
+                        <td>{item.icome_total}</td>
+                        <td>{item.projection_sales_total}</td>
+                        <td>{item.projection_shopping_total}</td>
+                        <td>{item.taxes_total}</td>
+                    </tr> </>) : <p>Cargando datos ...</p>}
+                </tbody>
+            </table>
+                
         </>
     )}
 export default Report
