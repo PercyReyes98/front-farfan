@@ -55,7 +55,7 @@ const FormReport = ()=>{
             event.preventDefault();
         
             try {
-              const response = await fetch('http://localhost:3000/report', {
+              const response = await fetch('http://localhost:3000/report/create', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'

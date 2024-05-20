@@ -12,6 +12,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Report />}/>
+        <Route path='/report/:company_ruc' element={<Report />}/>
         <Route path="form" element={<FormReport />}/> 
       </Routes>
     </BrowserRouter>
