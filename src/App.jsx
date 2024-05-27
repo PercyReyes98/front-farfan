@@ -1,6 +1,9 @@
 import Report from './components/Report'
 import FormReport from './components/FormReport'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Nabvar from './components/Nabvar'
+import StateAcount from './components/StateAcount'
+import Search from './components/Search'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 
 //import './App.css'
@@ -8,15 +11,19 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 function App() {
   //const {exercise, period}= report
   return (
-    <>
-      <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Report />}/>
-        <Route path='/report/:company_ruc' element={<Report />}/>
-        <Route path="form" element={<FormReport />}/> 
-      </Routes>
-    </BrowserRouter>
-    </>
+    
+      <div>
+      <Router>
+        <Nabvar/>
+        <Routes>
+          <Route path='/' element={<Report/>}></Route>
+          <Route path='/:ruc' element={<StateAcount/>}></Route>
+          <Route path='/form' element={<FormReport/>}></Route>
+          <Route path='/search' element={<Search/>}></Route>
+        </Routes>
+      </Router>
+      </div>
+  
   )
 }
 

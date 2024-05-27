@@ -24,7 +24,7 @@ const FormReport = ()=>{
     const handleChange = (event)=>{
         const {name,value} = event.target
         setReport({
-            ...report,
+            ...report, 
             [name]: value
         })
     } 

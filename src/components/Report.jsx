@@ -1,6 +1,6 @@
 
+import { useParams } from 'react-router'
 import {UseReport} from './hooks/useReport'
-import { useEffect, useState } from 'react';
 /*
             <p>RUC: {item.company_ruc}</p>
             <p>Empresa: {item.company_name}</p>
@@ -30,25 +30,7 @@ import { useEffect, useState } from 'react';
             <p>Total: {item.taxes_total}</p>
 */
 const Report = ()=>{
-    //const {report} = UseReport()
-    const [report, setReport] = useState([]);
-
-    useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const rucParam = urlParams.get("company_ruc");
-        console.log(urlParams)
-    const fetchResults = async (company_ruc) => { 
-      try {
-        const response = await fetch(`http://localhost:3000/report/${company_ruc}`);
-        const data = await response.json();
-        setReport(data);
-      } catch (error) {
-        console.error("Error al obtener los resultados:", error);
-      }
-    };
-    fetchResults(rucParam);
-  }, []);
-    console.log(report)
+    const {report} = UseReport()
     return (   
         <>
             <table className="table">
