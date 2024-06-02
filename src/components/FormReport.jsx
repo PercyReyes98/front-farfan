@@ -23,33 +23,48 @@ const FormReport = ()=>{
     }) 
     const handleChange = (event)=>{
         const {name,value} = event.target
+        console.log(name, value)
         setReport({
             ...report, 
             [name]: value
         })
     } 
-    useEffect(()=>{
-        if(report.bcp_amount != 0 && report.interbank_amount != 0 && report.bbva_amount != 0){
-            setReport(report => ({
-                ...report,
-                icome_total: Number(report.bcp_amount) + Number(report.interbank_amount) + Number(report.bbva_amount)
-            }))
-        }
-        if(report.projection_sales_total != 0 && report.projection_shopping_total != 0){
-            setReport(report =>({
-                ...report,
-                projection_sales_worth:(report.projection_sales_total != 0) ? (Number(report.projection_sales_total)/1.18).toFixed(2) : 0,
-                projection_sales_igv: (report.projection_sales_worth !=0)? (Number(report.projection_sales_worth)*0.18).toFixed(2) : 0,
-                projection_shopping_worth:(report.projection_shopping_total != 0) ? (Number(report.projection_shopping_total)/1.18).toFixed(2) : 0,
-                projection_shopping_igv:(report.projection_shopping_worth != 0)? (Number(report.projection_shopping_worth)*0.18).toFixed(2) : 0,
-                taxes_of_the_period: (report.projection_sales_igv != 0 && report.projection_shopping_igv !=0) ?Number(report.projection_sales_igv) - Number(report.projection_shopping_igv) : 0,
-                taxes_to_return: (report.taxes_of_the_period != 0)? Math.round(Number(report.taxes_of_the_period)) : 0,
-                taxes_monthly_rent:(report.projection_sales_igv != 0)? (Number(report.projection_sales_worth)*0.01).toFixed(0) : 0,
-                taxes_total: (report.taxes_to_return <= 0) ? report.taxes_monthly_rent : Number(report.taxes_to_return) + Number(report.taxes_monthly_rent)
-
-            }))
-        }
-    }, [report.bcp_amount, report.bbva_amount, report.interbank_amount, report.projection_sales_total, report.projection_shopping_total ])    
+    useEffect(() => {
+        const bcpAmount = Number(report.bcp_amount) || 0;
+        const interbankAmount = Number(report.interbank_amount) || 0;
+        const bbvaAmount = Number(report.bbva_amount) || 0;
+    
+        setReport((report) => ({
+          ...report,
+          icome_total: bcpAmount + interbankAmount + bbvaAmount,
+        }));
+      }, [report.bcp_amount, report.bbva_amount, report.interbank_amount]);
+    
+      useEffect(() => {
+        const projectionSalesTotal = Number(report.projection_sales_total) || 0;
+        const projectionShoppingTotal = Number(report.projection_shopping_total) || 0;
+    
+        const projectionSalesWorth = (projectionSalesTotal / 1.18).toFixed(2);
+        const projectionSalesIgv = (projectionSalesWorth * 0.18).toFixed(2);
+        const projectionShoppingWorth = (projectionShoppingTotal / 1.18).toFixed(2);
+        const projectionShoppingIgv = (projectionShoppingWorth * 0.18).toFixed(2);
+        const taxesOfThePeriod = Number(projectionSalesIgv) - Number(projectionShoppingIgv);
+        const taxesToReturn = Math.round(taxesOfThePeriod);
+        const taxesMonthlyRent = (projectionSalesWorth * 0.01).toFixed(0);
+        const taxesTotal = taxesToReturn <= 0 ? taxesMonthlyRent : Number(taxesToReturn) + Number(taxesMonthlyRent);
+    
+        setReport((report) => ({
+          ...report,
+          projection_sales_worth: projectionSalesWorth,
+          projection_sales_igv: projectionSalesIgv,
+          projection_shopping_worth: projectionShoppingWorth,
+          projection_shopping_igv: projectionShoppingIgv,
+          taxes_of_the_period: taxesOfThePeriod,
+          taxes_to_return: taxesToReturn,
+          taxes_monthly_rent: taxesMonthlyRent,
+          taxes_total: taxesTotal,
+        }));
+      }, [report.projection_sales_total, report.projection_shopping_total]);    
         
           const handleSubmit = async (event) => {
             event.preventDefault();
