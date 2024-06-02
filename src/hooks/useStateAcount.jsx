@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import  ReportApi from '../../services/report'
+import { getAllRuc } from "../services/report.service";
 
 export function UseStateAcount(){
     const {ruc} = useParams()
     const [stateAcount, setStateAcount] = useState([])
 
     useEffect(()=>{
-        ReportApi.getAllRuc(ruc)
+        getAllRuc(ruc)
         .then(response =>{
             setStateAcount(response)
         })

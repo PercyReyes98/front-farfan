@@ -1,0 +1,8 @@
+.triangle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 6rem;
+    border-color: transparent #B78C38 transparent transparent
+}

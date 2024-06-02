@@ -1,10 +1,11 @@
 
-import {UseStateAcount} from './hooks/useStateAcount'
+import {UseStateAcount} from '../hooks/useStateAcount'
 
 function StateAcount (){
-    const{ stateAcount} = UseStateAcount([]);
 
-    return (   
+    const{ stateAcount} = UseStateAcount([])
+
+    return (
         <>
             <table className="table">
                 <thead>
@@ -20,9 +21,9 @@ function StateAcount (){
                     </tr>
                 </thead>
                 <tbody>
-                {stateAcount.length !== 0 ? stateAcount.map((item)=>
+                {stateAcount.length !== 0 ? stateAcount.map((item, index)=>
                     <>
-                    <tr>
+                    <tr key={index}>
                         <td>{item.company_ruc}</td>
                         <td>{item.company_name}</td>
                         <td>{item.period}</td>
@@ -34,7 +35,7 @@ function StateAcount (){
                     </tr> </>) : <p>Cargando datos ...</p>}
                 </tbody>
             </table>
-                
+
         </>
     )}
 export default StateAcount

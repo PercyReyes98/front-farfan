@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import  ReportApi from '../../services/report'
+import { getAll } from "../services/report.service";
 
 export function UseReport(){
     const [report, setReport] = useState([])
 
     useEffect(()=>{
-        ReportApi.getAll()
+        getAll()
         .then(response =>{
             setReport(response)
         })

@@ -1,30 +1,25 @@
-import Report from './components/Report'
 import FormReport from './components/FormReport'
-import Nabvar from './components/Nabvar'
 import StateAcount from './components/StateAcount'
 import Search from './components/Search'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
-
-//import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ErrorPage, HomePage } from './pages'
+import { Layout } from './components/core/layout'
 
 function App() {
-  //const {exercise, period}= report
-  return (
-    
-      <div>
-      <Router>
-        <Nabvar/>
-        <Routes>
-          <Route path='/' element={<Report/>}></Route>
-          <Route path='/:ruc' element={<StateAcount/>}></Route>
-          <Route path='/form' element={<FormReport/>}></Route>
-          <Route path='/search' element={<Search/>}></Route>
-        </Routes>
-      </Router>
-      </div>
-  
-  )
+    return (
+        <BrowserRouter>
+            <Layout>
+                <Routes>
+                    <Route path='/' element={<HomePage />}></Route>
+                    <Route path='/:ruc' element={<StateAcount />}></Route>
+                    <Route path='/form' element={<FormReport />}></Route>
+                    <Route path='/search' element={<Search />}></Route>
+                    <Route path="*" element={<ErrorPage mensajeerror='Cuidado al Navegar / Esta Ruta no existe.' />} />
+                </Routes>
+            </Layout>
+        </BrowserRouter>
+
+    )
 }
 
 export default App
