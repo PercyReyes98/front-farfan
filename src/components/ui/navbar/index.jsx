@@ -19,7 +19,7 @@ export const Navbar = () => {
                     <Link to={"/"}>
                         <img src="/images/Logo.webp" alt="logo-farfan" className="h-[65px] md:h-[80px]" draggable="false" />
                     </Link>
-                    <button onClick={handleOpen}>
+                    <button onClick={handleOpen} className="md:hidden">
                         <CiMenuFries className={`h-[40px] w-[40px] ${isOpen ? "hidden" : "block"}`} />
                         <IoMdClose className={`h-[40px] w-[40px] ${isOpen ? "block" : "hidden"}`} />
                     </button>
