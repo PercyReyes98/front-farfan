@@ -1,5 +1,6 @@
+import { dataHome } from ".."
 import { Subtitle } from "../../../components/custom/subtitle"
-import { ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import { ComposedChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
 const data = [
     {
@@ -16,13 +17,13 @@ const data = [
 
 export const Ventas = () => {
     return (
-        <section className="flex flex-col items-start max-w-4xl mx-auto">
-            <div className="grid grid-cols-2 gap-5 items-center">
-                <article className="space-y-4 text-justify flex flex-col items-start text-[1.2rem]">
+        <section className="flex flex-col items-start max-w-4xl mx-auto pt-10 md:pt-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
+                <article className="space-y-4 text-justify flex flex-col items-start text-[1rem] lg:text-[1.2rem]">
                     <Subtitle>
                         Proyeccion de Ventas
                     </Subtitle>
-                    <p>Las Proyecciones de ventas se determinan por los siguientes criterios</p>
+                    <p>{dataHome.home.ventas.descripcion}</p>
                     <ul className="text-start">
                         <li>✅Por la capacidad de adquision (compras).</li>
                         <li>✅Por la recaudación de bancos.</li>
@@ -30,7 +31,7 @@ export const Ventas = () => {
                     </ul>
                 </article>
                 <section>
-                    <div className="w-full h-64">
+                    <div className="w-full h-52 lg:h-64">
                         <ResponsiveContainer width="100%" height="100%">
                             <ComposedChart
                                 layout="vertical"
@@ -38,6 +39,7 @@ export const Ventas = () => {
                                 height={400}
                                 data={data}
                                 margin={{
+                                    right: 20,
                                     bottom: 5
                                 }}
                             >
@@ -53,8 +55,8 @@ export const Ventas = () => {
                                     axisLine={true}
                                     tickLine={false}
                                     type="category"
-                                    scale="band"
-                                    style={{ fontSize: "0.75rem", display : "none" }}
+                                    scale="auto"
+                                    style={{ fontSize: "0.75rem", display: "none" }}
                                 />
                                 <Tooltip
                                     cursor={{ fill: "transparent" }}
@@ -64,7 +66,7 @@ export const Ventas = () => {
                             </ComposedChart>
                         </ResponsiveContainer>
                     </div>
-                    <div className="pl-16">
+                    <div className="md:pl-4">
                         <table className="w-full text-xs">
                             <thead className="bg-red-200">
                                 <tr className="space-x-5">
@@ -76,7 +78,7 @@ export const Ventas = () => {
                             <tbody className="bg-gray-200 text-center">
                                 <tr>
                                     <td className="p-1 flex items-center gap-2 justify-center">
-                                        <div className="h-5 w-5 bg-[#FE6449]"></div>
+                                        <div className="h-4 w-4 bg-[#FE6449]"></div>
                                         Compras adquiridas
                                     </td>
                                     <td className="p-1">S/1,525.42</td>
@@ -84,7 +86,7 @@ export const Ventas = () => {
                                 </tr>
                                 <tr>
                                     <td className="p-1 flex items-center gap-2 justify-center">
-                                        <div className="h-5 w-5 bg-[#364E55] "></div>
+                                        <div className="h-4 w-4 bg-[#364E55] "></div>
                                         Ventas Proyectadas
                                     </td>
                                     <td className="p-1">S/22,88.24</td>

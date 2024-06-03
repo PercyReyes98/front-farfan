@@ -5,7 +5,7 @@ export const Layout = ({ children }) => {
     return (
         <>
             <Navbar/>
-            <main className="container py-8">
+            <main className="container py-5 px-3 lg:px-0">
                 {children}
             </main>
             <Footer/>

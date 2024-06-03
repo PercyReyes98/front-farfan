@@ -1,6 +1,6 @@
 import { dataHome } from ".."
 import { Subtitle } from "../../../components/custom/subtitle"
-import { ComposedChart, Bar, YAxis, CartesianGrid, ResponsiveContainer, BarChart } from 'recharts'
+import { Bar, YAxis, CartesianGrid, ResponsiveContainer, BarChart } from 'recharts'
 
 const data = [
     {
@@ -20,7 +20,7 @@ const data = [
 const Databanco = ({ banco, plata }) => {
     return (
         <div className="flex flex-col items-center">
-            <p className="font-semibold text-[0.9rem]">{banco}</p>
+            <p className="font-semibold text-[0.8rem] lg:text-[0.9rem]">{banco}</p>
             <p className="text-[0.8rem]">{plata}</p>
         </div>
     )
@@ -29,8 +29,8 @@ const Databanco = ({ banco, plata }) => {
 export const Bancos = () => {
     return (
         <section className="flex flex-col items-start max-w-4xl mx-auto">
-            <div className="grid grid-cols-2 gap-5 items-center">
-                <article className="space-y-4 text-justify flex flex-col items-start text-[1.2rem]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
+                <article className="space-y-4 text-justify flex flex-col items-start text-[1rem] lg:text-[1.2rem]">
                     <Subtitle>
                         Recaudacion de Bancos
                     </Subtitle>
@@ -39,11 +39,12 @@ export const Bancos = () => {
                         {dataHome.home.bancos.descripciontwo}
                     </p>
                 </article>
-                <div className="w-full h-64">
+                <div className="w-full h-52 lg:h-64">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={data}
                             margin={{
-                                bottom: 5,
+                                bottom: 8,
+                                top: 5,
                                 left: 11,
                             }}
                         >
@@ -59,10 +60,12 @@ export const Bancos = () => {
                             <Bar dataKey="dinero" barSize={50} fill="#FE6449" radius={[5, 5, 0, 0]} />
                         </BarChart>
                     </ResponsiveContainer>
-                    <div className="py-1 bg-gray-300 flex items-center justify-end gap-14 pr-6">
-                        <Databanco banco="BCP" plata="s/45.263.00" />
-                        <Databanco banco="BBVA" plata="s/1.646.00" />
-                        <Databanco banco="INTERBANK" plata="s/54.000.00" />
+                    <div className="pl-0 md:pl-3">
+                        <div className="py-1 bg-gray-300 flex items-center justify-end gap-12 md:gap-7 lg:gap-14 pr-6">
+                            <Databanco banco="BCP" plata="s/45.263.00" />
+                            <Databanco banco="BBVA" plata="s/1.646.00" />
+                            <Databanco banco="INTERBANK" plata="s/54.000.00" />
+                        </div>
                     </div>
                 </div>
             </div>

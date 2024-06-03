@@ -40,9 +40,9 @@ export const Footer = () => {
 
     return (
         <footer className="py-5">
-            <div className="container flex items-end justify-between">
-                <img src="/images/Logo.webp" alt="Logo" className="h-[85px]" />
-                <p className="font-bold uppercase text-[0.95rem]">Datos adquiridos al : {day} de {month} del {year}</p>
+            <div className="container px-3 xl:px-0 flex items-end justify-between">
+                <img src="/images/Logo.webp" alt="Logo" className="h-[50px] md:h-[85px]" />
+                <p className="font-bold uppercase text-[0.6rem] lg:text-[0.95rem]">Datos adquiridos al : {day} de {month} del {year}</p>
             </div>
         </footer>
     )
