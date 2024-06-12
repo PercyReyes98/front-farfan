@@ -14,7 +14,7 @@ export const Navbar = () => {
 
     return (
         <>
-            <section className="py-2 border-b-2 bg-white z-[9999] sticky top-0 md:relative">
+            <section className="py-2 border-b-2 bg-white z-50 sticky top-0 md:relative">
                 <nav className="container px-3 xl:px-0 flex items-center justify-between">
                     <Link to={"/"}>
                         <img src="/images/Logo.webp" alt="logo-farfan" className="h-[65px] md:h-[80px]" draggable="false" />
@@ -34,10 +34,10 @@ export const Navbar = () => {
                     </ul>
                 </nav>
             </section>
-            <section className={`z-[999] shadow-lg top-[85px] fixed bg-white w-full transition-all duration-700 ${isOpen ? "translate-y-0" : "-translate-y-full opacity-0"} `}>
+            <section className={`z-30 shadow-lg top-[85px] fixed bg-white w-full transition-all duration-700 ${isOpen ? "translate-y-0" : "-translate-y-full opacity-0"} `}>
                 <nav className="flex flex-col gap-10 py-5 items-start px-8 md:px-24 lg:hidden">
                     {itemsMenu.map(({ href, name }, index) => (
-                        <Link to={href} key={index} className="w-full font-medium uppercase relative text-[1.2rem] hover:text-primary ">
+                        <Link to={href} key={index} className="w-full font-medium uppercase relative text-[1rem] hover:text-primary ">
                             {name}
                         </Link>
                     ))}

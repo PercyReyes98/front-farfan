@@ -1,13 +1,14 @@
 
-import {UseStateAcount} from '../hooks/useStateAcount'
 
 function StateAcount (){
 
-    const{ stateAcount} = UseStateAcount([])
+    // const{ stateAcount} = UseStateAcount([])
+
+    // console.log(stateAcount)
 
     return (
         <>
-            <table className="table">
+            {/* <table className="table">
                 <thead>
                     <tr>
                         <th>RUC</th>
@@ -34,7 +35,7 @@ function StateAcount (){
                         <td>{item.taxes_total}</td>
                     </tr> </>) : <p>Cargando datos ...</p>}
                 </tbody>
-            </table>
+            </table> */}
 
         </>
     )}

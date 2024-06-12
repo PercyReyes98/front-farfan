@@ -1,4 +1,4 @@
-import { Input } from "../input"
+import { Input } from "@/components/ui/input"
 
 const InputForm = (({ id, title, containerClassName = "", children, ...props }) => {
     return (

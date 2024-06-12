@@ -2,21 +2,6 @@ import { dataHome } from ".."
 import { Subtitle } from "../../../components/custom/subtitle"
 import { Bar, YAxis, CartesianGrid, ResponsiveContainer, BarChart } from 'recharts'
 
-const data = [
-    {
-        name: 'BCP',
-        dinero: 4526300
-    },
-    {
-        name: 'BBVA',
-        dinero: 164600
-    },
-    {
-        name: 'INTERBANK',
-        dinero: 5400000
-    }
-]
-
 const Databanco = ({ banco, plata }) => {
     return (
         <div className="flex flex-col items-center">
@@ -26,7 +11,7 @@ const Databanco = ({ banco, plata }) => {
     )
 }
 
-export const Bancos = () => {
+export const Bancos = ( { data }) => {
     return (
         <section className="flex flex-col items-start max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
@@ -56,15 +41,14 @@ export const Bancos = () => {
                                 }
                                 style={{ fontSize: "0.75rem" }}
                             />
-                            {/* <Tooltip /> */}
                             <Bar dataKey="dinero" barSize={50} fill="#FE6449" radius={[5, 5, 0, 0]} />
                         </BarChart>
                     </ResponsiveContainer>
-                    <div className="pl-0 md:pl-3">
-                        <div className="py-1 bg-gray-300 flex items-center justify-end gap-12 md:gap-7 lg:gap-14 pr-6">
-                            <Databanco banco="BCP" plata="s/45.263.00" />
-                            <Databanco banco="BBVA" plata="s/1.646.00" />
-                            <Databanco banco="INTERBANK" plata="s/54.000.00" />
+                    <div className="md:pl-[70px]">
+                        <div className="py-1 bg-gray-300 flex items-center justify-around md:pl-4 pl-[70px]">
+                            {data.map((item, index) => (
+                                <Databanco key={index} banco={item.name} plata={`s/${item.dinero}`} />
+                            ))}
                         </div>
                     </div>
                 </div>

@@ -6,7 +6,7 @@ export const itemsMenu = [
     },
     {
         name: 'Formulario',
-        href: '/form',
+        href: '/create/register/form',
     },
     {
         name: 'Buscador',
